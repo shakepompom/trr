@@ -1,0 +1,84 @@
+.funfact {
+  &__text {
+    padding-bottom: 30px;
+    font-size: var(--fz-small);
+    font-weight: 700;
+    line-height: 1.37;
+    letter-spacing: 0.8px;
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    @media (--laptop) {
+      padding-bottom: 50px;
+      font-size: var(--fz-big);
+    }
+  }
+
+  &__source {
+    font-size: var(--fz-small);
+    text-align: center;
+  }
+
+  &__separator {
+    position: absolute * * 30px 50%;
+    transform: translateX(-50%);
+  }
+
+  .wrapper {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    
+    @media (--laptop) {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+  }
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @media (--laptop) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+  
+  .content {
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .close {
+    position: absolute 20px 20px * *;
+
+    @media (--laptop) {
+      top: 50px;
+      right: 60px;
+    }
+  }
+
+  .icon {
+    &--logo {
+      fill: white;
+      background: transparent;
+    }
+
+    &--clouds-left,
+    &--clouds-right {
+      display: none;
+    }
+
+    &--close {
+      display: inline-block;
+      fill: white;
+    }
+  }
+}

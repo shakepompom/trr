@@ -1,0 +1,19 @@
+@custom-media --laptop (width >= 1024px);
+
+:root {
+  --background: #fff;
+  --backgroundDark: #000;
+  --textColorDark: #1a1a1a;
+  --textColorLight: #fff;
+  --textHover: #ccc3fe;
+  --textSelected: #ee3758;
+  --shadow: #000;
+  --sliderDot-with-opacity: #e4f9ec;
+  --sliderDot: #77e09e;
+  --sliderDotActive: #ccc3fe;
+  --fontFamily: 'PT Serif', Times, serif;
+  --fz-small: 18px;
+  --fz-middle: 24px;
+  --fz-big: 35px;
+  --transition: all 0.3s;
+}

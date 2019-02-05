@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block bodyAdditionalClass %}funfact{% endblock %}
+
+{% set colors = ['#b3a6ff', '#77e09e', '#fde44f'] %}
+{% block bodyAdditionalStyle %}style="background: {{ random(colors) }}"{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="funfact__text">{{ fact.text }}</div>
+        <div class="funfact__source">&#169; {{ fact.source }}</div>
+        <div class="funfact__separator">
+            <svg class="icon icon--separator">
+                <use xlink:href="#icon-separator"></use>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

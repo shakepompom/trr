@@ -1,0 +1,6 @@
+{% for rule in rules %}
+    <div class="rule__number"><a id="{{ rule.number }}" href="#{{ rule.number }}">§{{ rule.number }}</a></div>
+    <div class="rule__text">{{ rule.text|raw }}</div>
+{% else %}
+    <div class="rule__text">No records found.</div>
+{% endfor %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block wrapperAdditionalClass %}{% endblock %}
+
+{% block profile_top %}
+    {% include 'misc/_profile_top.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="practice">
+        <div class="practice__title">§ {{ quiz.rule.number }}. {{ quiz.rule.section.title }}</div>
+        <div class="task">
+            <div class="task__slider">
+                {% for task in quiz.tasks %}
+                    <div class="task__slide js-task" data-task-id="{{ task.id }}">
+                        <div class="task__task">{{ task.text|replace({ '_': '<span class="task__empty js-empty"></span>' })|raw }}</div>
+                        <div class="task__answers">
+                            {% for option in task.options %}
+                                <div class="task__answer js-answer">
+                                    <span class="task__answer-inner">
+                                        {{ option }}
+                                    </span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="page__gl-dashed"></div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="task__btn-wrapper">
+            <div class="task__btn btn btn--purple">
+                <div class="btn__background">
+                    <a class="btn__inner js-send-answers" href="{{ path('practice_result') }}" data-url="{{ path('practice_result_save') }}">Отправить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

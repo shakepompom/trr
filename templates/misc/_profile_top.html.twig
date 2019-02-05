@@ -1,0 +1,35 @@
+<div class="profile profile--top">
+    <a href="{{ path('home') }}">
+        <div class="profile__avatar">
+            {% if app.user is not null %}
+                <svg class="icon icon--avatar-girl">
+                    <use xlink:href="#icon-girl-1"></use>
+                </svg>
+                <div class="profile__status">
+                    <svg class="icon icon--status-noob">
+                        <use xlink:href="#icon-status-1"></use>
+                    </svg>
+                </div>
+            {% else %}
+                <svg class="icon icon--avatar-girl">
+                    <use xlink:href="#icon-girl-3"></use>
+                </svg>
+                <div class="profile__status">
+                    <svg class="icon icon--status-noob">
+                        <use xlink:href="#icon-status-3"></use>
+                    </svg>
+                </div>
+            {% endif %}
+        </div>
+    </a>
+    <div class="profile__info">
+        {% if app.user is not null %}
+            {% set status = userStatus(app.user) %}
+            <span class="profile__name"><a href="{{ path('home') }}">{{ app.user.username }}, {{ status.rulesLearnt }}/{{ status.rulesTotal }}</a>
+                {#<svg class="profile__icon icon icon--arrow-menu">#}
+                    {#<use xlink:href="#icon-arrow-menu"></use>#}
+                {#</svg>#}
+            </span>
+        {% endif %}
+    </div>
+</div>

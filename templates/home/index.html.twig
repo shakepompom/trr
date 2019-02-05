@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block body %}
+    {% if app.user is null %}
+        <div class="main">
+            {# <a class="btn btn__primary" href="{{ path('fos_user_security_login') }}">Логин</a> #}
+            <div class="main__title page__title">Превращаем олбанский в русский</div>
+            <div class="page__title">
+                Каждый раз, когда мы пишем, нас кто-то читает и составляет о нас мнение. Из-за броских ошибок кто-то
+                решает не продолжать с нами знакомства, не приглашать на интервью или не давать повышения.
+            </div>
+            <div class="result__separator">
+                <svg class="icon icon--separator">
+                    <use xlink:href="#icon-separator"></use>
+                </svg>
+            </div>
+            <div class="page__title">
+                Это печалит нас. Поэтому мы сделали этот сервис, чтобы вы стали счастливее.
+            </div>
+            <br>
+            <div class="btn btn--vk">
+                <div class="btn__background">
+                    <a class="btn__inner" href="/hwi/connect/vkontakte">
+                        <svg class="icon icon--vk">
+                            <use xlink:href="#icon-vk"></use>
+                        </svg>
+                        Войти
+                    </a>
+                </div>
+            </div>
+            {# <a class="btn btn__primary" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+            <a class="btn btn__primary" href="{{ path('fos_user_resetting_request') }}">Восстановление пароля</a> #}
+        </div>
+    {% else %}
+        {% include 'misc/_profile_main.html.twig' with {status: status} %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,123 @@
+.task {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: center;
+
+  @media (--laptop) {
+    margin-bottom: 50px;
+  }
+
+  &:not(:first-child) {
+    display: none;
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__title {
+    display: flex;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--shadow);
+    border-bottom: 1px solid var(--shadow);
+
+    @media (--laptop) {
+      margin-bottom: 50px;
+    }
+
+    &--interval {
+      justify-content: center;
+      color: var(--textColorLight);
+      background: var(--sliderDot);
+      border: none;
+    }
+  }
+
+  &__paragraph {
+    display: inline-block;
+    margin-left: auto;
+  }
+
+  &__task {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: var(--fz-middle);
+    text-align: center;
+
+    @media (--laptop) {
+      font-size: var(--fz-big);
+    }
+  }
+
+  &__empty {
+    display: inline-block;
+    min-width: 50px;
+    height: 35px;
+    padding: 0 10px;
+    margin: 0 10px;
+    line-height: 1.15;
+    vertical-align: middle;
+    background-color: #f7faff;
+    border: 1px dashed #cce0ff;
+    border-radius: 5px;
+
+    @media (--laptop) {
+      min-width: 70px;
+      height: 50px;
+      line-height: 1.2;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__answers {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__answer-inner {
+    transform: translateY(-2px);
+  }
+
+  &__answer {
+    padding: 4px 10px;
+    font-size: var(--fz-middle);
+    color: var(--textColorLight);
+    cursor: pointer;
+    background: var(--backgroundDark);
+    border-radius: 5px;
+    transition: var(--transition);
+
+    &:hover {
+      background: #77e09e;
+    }
+
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+
+    &--checked {
+      background: #96b4fe;
+    }
+  }
+
+  &__btn-wrapper {
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-block;
+
+    &:not(:first-child) {
+      display: none;
+    }
+  }
+}
+
+.practice {
+  .task {
+    &:not(:first-child) {
+      display: block;
+    }
+  }
+}

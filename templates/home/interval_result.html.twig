@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block wrapperAdditionalClass %}{% endblock %}
+
+{% block profile_top %}
+    {% include 'misc/_profile_top.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="result result--interval">
+        <div class="result__title">
+            Интервальное повторение
+        </div>
+        <div class="result__picture">
+            {% if quiz.result %}
+                <svg class="icon icon--result">
+                    <use xlink:href="#icon-{{ quiz.result.correct }}"></use>
+                </svg>
+                {# Ваш результат: {{ quiz.result.correct }}/{{ quiz.result.total }}. #}
+            {% else %}
+                Попробуй еще раз.
+            {% endif %}
+        </div>
+        <div class="result__rule">
+        {# {% if condition %} #}
+            {# Ты отлично запомнил это правило! #}
+        {# {% else %} #}
+            Правила, в которых ты ошибся, удалены из пройденных. Пройди экзамен на 5 из 5, чтобы они вернулись в изученные.
+        {# {% endif %} #}
+        </div>
+        <div class="result__separator">
+            <svg class="icon icon--separator">
+                <use xlink:href="#icon-separator"></use>
+            </svg>
+        </div>
+        <div class="result__list">
+            {% for task in quiz.tasks %}
+                {% set userAnswer = quiz.result.userAnswerForTask(task) ? quiz.result.userAnswerForTask(task).answer : false %}
+                {% set answerModificator = userAnswer is same as (task.answer) ? 'right' : 'wrong' %}
+                <div class="result__item check check--{{ answerModificator }}">
+                    <div class="check__wrapper">
+                        <div class="check__title">{{ task.text|replace({'_': '<span class="check__answer check__answer--'~answerModificator~'" data-right-answer="'~task.answer~'">'~userAnswer~'</span>'})|replace({'<слитно>': ''})|raw }}</div>
+                        <div class="check__description">{{ task.explanation }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="btn__wrapper">
+            <a class="result__btn btn btn--black" href="{{ path('practice') }}">Учить правило</a>
+            <div class="result__btn btn btn--green">
+                <div class="btn__background">
+                    <a class="btn__inner" href="{{ path('exam_next') }}">Продолжить</a>
+                </div>
+            </div>
+        </div>
+        <div class="result__last">
+            <div class="result__last-title">Последние результаты:</div>
+            {% for attempt in lastResults %}
+                <div class="result__last-item">
+                    <div class="result__last-score">{{ attempt.correct }}/{{ attempt.total }} </div>
+                    <div class="result__last-date">&nbsp;&mdash; {{ attempt.updatedAt|date("j F Y в G:i", "Europe/Moscow") }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+.content {
+  position: relative;
+  min-height: 300px;
+
+  &__wrapper {
+    padding: 20px;
+
+    @media (--laptop) {
+      padding: 50px;
+    }
+  }
+}
+
+.wrapper--centered {
+  .content {
+    position: absolute 50% 0 * 0;
+    transform: translate(0, -50%);
+  }
+}

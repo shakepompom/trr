@@ -1,0 +1,40 @@
+<div class="profile profile--main">
+    <div class="profile__avatar">
+        <svg class="icon icon--avatar-girl">
+            <use xlink:href="#icon-girl-1"></use>
+        </svg>
+        <div class="profile__status">
+            <svg class="icon icon--status-noob">
+                <use xlink:href="#icon-status-1"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="profile__info">
+        <div class="profile__text">Привет, {{ app.user.username }}!</div>
+        <div class="profile__text">
+            Добро пожаловать в тренажёр русских правил! Мы придумали классные упражнения, чтобы максимально быстро и интересно подкачать твою грамматику. Удачи!
+        </div>
+    </div>
+    <div class="profile__progress progress js-progress" data-learnt="{{ status.rulesLearnt }}" data-total="{{ status.rulesTotal }}">
+        <div class="progress__bar js-progress-bar">
+            <div class="progress__line js-progress-line"></div>
+            {% if status.rulesLearnt != 0 %}
+                <div class="progress__level js-learnt-number">{{ status.rulesLearnt }}</div>
+            {% endif %}
+            <div class="progress__point progress__point--0 {% if status.rulesLearnt > 0 %}progress__point--active{% endif %}"></div>
+            <div class="progress__point progress__point--50 {% if status.rulesLearnt >= 50 %}progress__point--active{% endif %}"></div>
+            <div class="progress__point progress__point--140 {% if status.rulesLearnt >= 140 %}progress__point--active{% endif %}"></div>
+            <div class="progress__point progress__point--206 {% if status.rulesLearnt >= 206 %}progress__point--active{% endif %}"></div>
+        </div>
+    </div>
+    <div class="profile__info">
+        <div class="profile__btn btn btn--green">
+            <div class="btn__background">
+                <a class="btn__inner" href="{{ path('exam_next') }}">Начать</a>
+            </div>
+        </div>
+    </div>
+    <div class="profile__info">
+        <a class="profile__logout" href="{{ path('fos_user_security_logout') }}">Выйти из аккаунта</a>
+    </div>
+</div>

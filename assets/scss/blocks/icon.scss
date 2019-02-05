@@ -1,0 +1,95 @@
+.icon {
+  display: inline-block;
+
+  &--logo {
+    position: fixed 20px * * 20px;
+    z-index: 20;
+    width: 50px;
+    height: 41px;
+    padding: 5px;
+    background: var(--background);
+    fill: #1a1a1a;
+
+    @media (--laptop) {
+      top: 50px;
+      left: 50px;
+      width: 100px;
+      height: 82px;
+      padding: 0;
+    }
+  }
+
+  &--clouds-left {
+    position: fixed * * 0 0;
+    z-index: 20;
+    width: 113px;
+    height: 123px;
+    
+    @media (--laptop) {
+      width: 353px;
+      height: 386px;
+    }
+  }
+
+  &--clouds-right {
+    position: fixed 0 0 * *;
+    z-index: 20;
+    width: 134px;
+    height: 102px;
+
+    @media (--laptop) {
+      width: 434px;
+      height: 331px;
+    }
+  }
+
+  &--avatar-girl {
+    size: 100%;
+  }
+
+  &--status-noob {
+    size: 49px 16px;
+    
+    @media (--laptop) {
+      size: 62px 26px;
+    }
+  }
+
+  &--arrow-menu {
+    width: 12px;
+    height: 12px;
+  }
+  
+  &--arrow-next {
+    width: 32px;
+    height: 30px;
+  }
+
+  &--separator {
+    width: 72px;
+    height: 15px;
+  }
+
+  &--vk {
+    width: 30px;
+    height: 17px;
+    margin-right: 15px;
+  }
+
+  &--result {
+    size: 100px;
+
+    @media (--laptop) {
+      size: 200px;
+    }
+  }
+
+  &--close {
+    display: none;
+    size: 20px;
+
+    @media (--laptop) {
+      size: 40px;
+    }
+  }
+}

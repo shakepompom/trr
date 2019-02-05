@@ -1,0 +1,12 @@
+{
+  "linters": {
+    "assets/**/*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "assets/**/*.scss": [
+      "stylelint"
+    ]
+  }
+}

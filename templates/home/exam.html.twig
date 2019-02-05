@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block wrapperAdditionalClass %}{% endblock %}
+
+{% block profile_top %}
+    {% include 'misc/_profile_top.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="task">
+        <div class="task__title">
+            Выберите правильный ответ.
+            <span class="task__paragraph">§ {{ quiz.rule.number }}</span>
+        </div>
+        <div class="task__slider js-task-slider">
+            {% for task in quiz.tasks %}
+                <div class="task__slide js-task" data-task-id="{{ task.id }}">
+                    <div class="task__task">{{ task.text|replace({ '_': '<span class="task__empty js-empty"></span>' })|raw }}</div>
+                    <div class="task__answers">
+                        {% for option in task.options %}
+                            <div class="task__answer js-answer">
+                                <span class="task__answer-inner">
+                                    {{ option }}
+                                </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="task__btn-wrapper">
+        <div class="task__btn btn btn--purple btn--disabled js-next-task">
+            <div class="btn__background">
+                <a class="btn__inner" href="#">Дальше</a>
+            </div>
+        </div>
+        <div class="task__btn btn btn--purple btn--disabled">
+            <div class="btn__background">
+                <a class="btn__inner js-send-answers" href="{{ path('exam_result') }}" data-url="{{ path('exam_result_save') }}">Отправить</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

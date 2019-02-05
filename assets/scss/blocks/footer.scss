@@ -1,0 +1,30 @@
+.footer {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  right: 0;
+  bottom: -87px;
+  padding: 20px;
+
+  @media (--laptop) {
+    position: fixed;
+    bottom: 0;
+    padding: 30px;
+  }
+  
+  &__item {
+    &:not(:first-child) {
+      margin-left: 50px;
+    }
+  }
+
+  .text {
+    &__href {
+      color: var(--textColorDark);
+
+      &:hover {
+        color: var(--textHover);
+      }
+    }
+  }
+}

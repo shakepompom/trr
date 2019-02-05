@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Russian Rules!{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="about__title page__title">О нас</div>
+        <div class="about__text">
+            <p>
+                Этот проект был сделан на VK Hackathon 2018 командой из четырёх человек:
+            </p>
+            <ul>
+                <li>Маша Терешкова — дизайн,</li>
+                <li>Кристина Усольцева — фронтенд,</li>
+                <li>Миша Марухин — Android-приложение,</li>
+                <li>Макс Кузнецов — бэкенд.</li>
+            </ul>
+        </div>
+        <p class="about__wrapper">
+            <img class="about__img" src="team.jpg" srcset="team@2x.jpg 2x" alt="">
+        </p>
+    </div>
+{% endblock %}

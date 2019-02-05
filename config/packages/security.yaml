@@ -1,0 +1,69 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_register:
+            pattern:  ^/api/register
+            stateless: true
+            anonymous: true
+
+        api_login:
+            pattern:  ^/api/login
+            stateless: true
+            anonymous: true
+            json_login:
+                check_path:      /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:   ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+            oauth:
+                resource_owners:
+                    vkontakte: "/hwi/login/check-vkontakte"
+                login_path:        /
+                use_forward:       false
+                failure_path:      /
+
+                oauth_user_provider:
+                    service: App\Security\FOSUBUserProvider #hwi_oauth.user.provider.fosub_bridge
+
+            logout:       true
+            anonymous:    true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/login$,     role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register,   role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/rules,      roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/register$,   role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/hwi,           role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/$,           role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/about$,           role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,           role: IS_AUTHENTICATED_FULLY }

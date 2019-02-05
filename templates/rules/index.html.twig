@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список правил{% endblock %}
+
+{% block wrapperAdditionalClass %}{% endblock %}
+{% block bodyAdditionalClass %}z-higher{% endblock %}
+
+{% block profile_top %}
+    {% include 'misc/_profile_top.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="page__title">Список правил</div>
+
+    {% include 'rules/_list.html.twig' with {rules: rules} %}
+
+{% endblock %}

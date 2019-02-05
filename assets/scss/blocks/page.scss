@@ -1,0 +1,15 @@
+.page {
+  &__title {
+    margin-bottom: 20px;
+    font-size: var(--fz-middle);
+  }
+
+  &__gl-dashed {
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    background-image: linear-gradient(90deg,#000 15%,transparent 0);
+    background-repeat: repeat-x;
+    background-size: 9px 1px;
+  }
+}

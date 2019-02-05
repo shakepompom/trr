@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Russian Rules{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        {% block meta_og_tags %}
+            <meta property="og:title" content="Russian Rules" />
+            <meta property="og:description" content="Превращаем олбанский в русский." />
+            <meta property="og:url" content="http://russianrules.ru/" />
+            <meta property="og:image" content="logotext.jpg" />
+            <meta property="og:image:width" content="300" />
+            <meta property="og:image:height" content="386" />
+        {% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('main.css') }}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body class="{% block bodyAdditionalClass %}{% endblock %}" {% block bodyAdditionalStyle %}{% endblock %}>
+        {% include 'misc/background.html.twig' %}
+        <div class="wrapper {% block wrapperAdditionalClass %}{% endblock %}">
+
+            {% block profile_top %}{% endblock %}
+
+            <div class="content">
+                <div class="content__wrapper">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+
+            {% block addon_footer %}{% endblock %}
+
+        </div>
+
+        {% include 'misc/footer.html.twig' %}
+
+        {% block popup %}{% endblock %}
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
